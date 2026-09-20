@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import favicon from "/favicon.ico";
 
-import heroEye from "@/assets/hero-eye.png";
+import heroImg from "@/assets/rishi.jpg";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 import FrontendDeveloperSection from "@/components/FrontendDeveloperSection";
@@ -12,15 +12,16 @@ import ContactSection from "@/components/ContactSection";
 import { Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 
+import { personalData } from "./data/portfolioData";
 
-const logos = ["PRINCE", "WEBKAIZEN", "FRONTEND", "DEVELOPER"];
+const logos = personalData.logos;
 
 export default function App() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [time, setTime] = useState("");
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  const text = "PRINCE";
+  const text = personalData.displayName;
   const [displayed, setDisplayed] = useState("");
   const [colorMode, setColorMode] = useState(0);
 
@@ -72,7 +73,7 @@ export default function App() {
       if (i < text.length) setTimeout(type, 200);
     }
     type();
-  }, []);
+  }, [text]);
 
   return (
     <Routes>
@@ -89,7 +90,7 @@ export default function App() {
               />
 
               <span className="text-[10px] md:text-xs tracking-[0.3em] text-white/70 uppercase font-medium">
-                PRINCE · WEBKAIZEN
+                {personalData.name} · PORTFOLIO
               </span>
             </div>
             <ul className="hidden md:flex items-center gap-10 text-xs tracking-widest text-white/70 uppercase">
@@ -117,13 +118,13 @@ export default function App() {
 
               <li
                 onClick={() =>
-                  document.getElementById("showcase")?.scrollIntoView({
+                  document.getElementById("work")?.scrollIntoView({
                     behavior: "smooth",
                   })
                 }
                 className="relative hover:text-white transition-colors cursor-pointer after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
               >
-                Showcase
+                Work
               </li>
 
               <li
@@ -190,14 +191,14 @@ export default function App() {
 
               <button
                 onClick={() => {
-                  document.getElementById("showcase")?.scrollIntoView({
+                  document.getElementById("work")?.scrollIntoView({
                     behavior: "smooth",
                   });
                   setMobileMenu(false);
                 }}
                 className="relative after:absolute after:left-0 after:-bottom-2 after:h-[1px] after:w-0 after:bg-white after:transition-all hover:after:w-full"
               >
-                Showcase
+                Work
               </button>
 
               <button
@@ -218,12 +219,16 @@ export default function App() {
             id="Home"
             className="relative w-full h-screen min-h-[640px] overflow-hidden bg-black"
           >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img
-                src={heroEye}
-                alt="Hero"
-                className="h-[90%] w-[90%] object-contain object-center"
-              />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="relative h-[85%] w-[85%] max-w-xl flex items-center justify-center overflow-hidden rounded-3xl">
+                <img
+                  src={heroImg}
+                  alt="Rishi Gudigar"
+                  className="h-full w-full object-cover object-top opacity-70 filter contrast-105 brightness-95"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
+              </div>
             </div>
 
             <div className="relative z-10 w-full h-full flex flex-col justify-between px-6 md:px-12 pt-24 pb-10">
@@ -234,54 +239,40 @@ export default function App() {
                 {displayed || "\u00A0"}
               </h1>
 
-              <p className="md:absolute md:top-28 md:right-12
-mt-4 md:mt-0
-text-right
-text-3xl md:text-4xl lg:text-5xl
-leading-[1.05]
-max-w-md
-font-[Poppins] font-bold
-tracking-wide
-text-transparent bg-clip-text
-bg-[length:200%_auto]
-bg-gradient-to-r
-from-white via-white/60 to-white
-animate-[shine_4s_linear_infinite]">
-                Creating
-                <br />
-                Websites
-                <br />
-                That Feel
-                <br />
-                Alive.
-              </p>
+              <div className="md:absolute md:top-28 md:right-12 mt-4 md:mt-0 text-right max-w-md">
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.05] font-black tracking-tight text-white">
+                  I BUILD.<br />
+                  I DRAW.<br />
+                  <span className="text-white/50">I CREATE.</span>
+                </p>
+                <p className="text-xs font-mono tracking-widest text-white/40 uppercase mt-3">
+                  "{personalData.tagline}"
+                </p>
+              </div>
 
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mt-auto">
-                <p className="relative text-sm sm:text-base lg:text-xl
-    leading-relaxed max-w-md
-    font-[Poppins] font-medium
-    tracking-wide
-    text-transparent bg-clip-text
-    bg-[length:200%_auto]
-    bg-gradient-to-r
-    from-white via-white/60 to-white
-    animate-[shine_4s_linear_infinite]">
-                  Turning creative ideas into interactive and{" "} <br />
-                  <em className="not-italic text-white">
-                    high-quality web experiences.
-                  </em>
+                <p className="relative text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg font-[Poppins] font-normal text-white/80">
+                  {personalData.heroDescription}
                 </p>
 
-                <a
-                  href="https://www.webkaizen.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="inline-flex items-center gap-3 border border-white/20 text-white px-6 py-3 text-xs tracking-[0.25em] uppercase font-semibold hover:bg-white hover:text-black transition-all duration-300 rounded-full">
-                    WEBKAIZEN
-                    <ArrowUpRight size={16} />
-                  </button>
-                </a>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={personalData.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-white/10 text-white px-5 py-2.5 text-xs font-mono tracking-wider uppercase font-bold hover:bg-white hover:text-black border border-white/20 transition-all duration-300 rounded-full"
+                  >
+                    GITHUB →
+                  </a>
+                  <a
+                    href={personalData.instagramPersonal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 text-xs font-mono tracking-wider uppercase font-bold hover:bg-white/80 transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.12)]"
+                  >
+                    INSTAGRAM →
+                  </a>
+                </div>
               </div>
             </div>
           </section>
@@ -313,7 +304,7 @@ animate-[shine_4s_linear_infinite]">
           <section id="about">
             <FrontendDeveloperSection />
           </section>
-          <section id="showcase">
+          <section id="work">
             <Showcase />
           </section>
           <section id="contact">

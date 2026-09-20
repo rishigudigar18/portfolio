@@ -6,7 +6,7 @@ import html2pdf from "html2pdf.js";
 
 export default function About() {
   const navigate = useNavigate();
-  const text = "About Myself";
+  const text = "ABOUT ME";
 
   const [displayedText, setDisplayedText] = useState("");
   const [countdown, setCountdown] = useState(null);
@@ -60,7 +60,7 @@ export default function About() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince Singh Resume</title>
+    <title>Rishi Gudigar Resume</title>
     <style>
         * {
             margin: 0;
@@ -101,23 +101,6 @@ export default function About() {
             display: flex;
             gap: 40px;
             align-items: flex-start;
-        }
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 12px;
-            border: 3px solid #444444;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-            flex-shrink: 0;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .profile-photo:hover {
-            border-color: #666666;
-            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
         }
 
         .header-content {
@@ -313,10 +296,6 @@ export default function About() {
             line-height: 1.6;
         }
 
-        .project p + p {
-            margin-top: 8px;
-        }
-
         .education-item {
             background: #1a1a1a;
             padding: 18px;
@@ -401,52 +380,6 @@ export default function About() {
                 page-break-inside: avoid;
             }
         }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 30px 20px;
-            }
-
-            .header-content h1 {
-                font-size: 32px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .strengths-list {
-                grid-template-columns: 1fr;
-            }
-
-            .content {
-                padding: 25px;
-            }
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333333;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #444444;
-        }
     </style>
 </head>
 <body>
@@ -454,26 +387,29 @@ export default function About() {
         <div class="resume-wrapper">
             <!-- Header -->
             <div class="header">
-                <img src="https://raw.githubusercontent.com/princekumar-dev74/web-images-link/31f4e55d34521861579bab4ab322372fe7d8cec4/Name%20%3D%20Prince%20Singh.png" alt="Prince Kumar" class="profile-photo">
                 <div class="header-content">
-                    <h1>Prince Kumar</h1>
-                    <p class="title">Frontend Developer | Cybersecurity & AI Enthusiast</p>
+                    <h1>Rishi Gudigar</h1>
+                    <p class="title">Information Science & Engineering Student | Creative Developer</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <span class="contact-icon">🏠︎</span>
-                            <span>Gaya, Bihar, India</span>
+                            <span>Karnataka, India</span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">✉︎</span>
-                            <a href="mailto:sprince05873@gmail.com">sprince05873@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">🆆</span>
-                            <a href="https://prince-singh-rouge.vercel.app/" target="_blank">Portfolio Website</a>
+                            <a href="mailto:rishigudigar18@gmail.com">rishigudigar18@gmail.com</a>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">⛆</span>
-                            <a href="https://github.com/princekumar-dev74" target="_blank">princekumar-dev74</a>
+                            <a href="https://github.com/rishigudigar18" target="_blank">github.com/rishigudigar18</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">💼</span>
+                            <a href="https://www.linkedin.com/in/risshhiii" target="_blank">linkedin.com/in/risshhiii</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🎨</span>
+                            <a href="https://www.instagram.com/risshhiiidrawss" target="_blank">@risshhiiidrawss</a>
                         </div>
                     </div>
                 </div>
@@ -483,57 +419,9 @@ export default function About() {
             <div class="content">
                 <!-- Professional Summary -->
                 <section class="section">
-                    <h2 class="section-title">Professional Summary</h2>
+                    <h2 class="section-title">About Me</h2>
                     <div class="summary-text">
-                        Passionate and self-driven Class 12 student with a strong interest in frontend development, cybersecurity, and modern web technologies. Skilled in building responsive and interactive web applications using modern frameworks and tools. Enthusiastic about learning new technologies, improving problem-solving skills, and creating innovative digital experiences.
-                    </div>
-                </section>
-
-                <!-- Technical Skills -->
-                <section class="section">
-                    <h2 class="section-title">Technical Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h3>Frontend Development</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">HTML5</span>
-                                <span class="skill-tag">CSS3</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">TypeScript</span>
-                                <span class="skill-tag">React.js</span>
-                                <span class="skill-tag">Next.js</span>
-                                <span class="skill-tag">Tailwind CSS</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Tools & Platforms</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Git & GitHub</span>
-                                <span class="skill-tag">Firebase</span>
-                                <span class="skill-tag">Vercel</span>
-                                <span class="skill-tag">Netlify</span>
-                                <span class="skill-tag">Windows Terminal</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Projects -->
-                <section class="section">
-                    <h2 class="section-title">Projects</h2>
-                    <div class="section-content">
-                        <div class="project">
-                            <h3>Personal Portfolio Website</h3>
-                            <p>• Developed a modern responsive portfolio website</p>
-                            <p>• Created smooth animations and interactive UI components</p>
-                            <p>• Optimized the website for performance and mobile responsiveness</p>
-                        </div>
-                        <div class="project">
-                            <h3>Frontend Showcase Projects</h3>
-                            <p>• Built multiple frontend UI projects using React and Tailwind CSS</p>
-                            <p>• Developed responsive layouts and reusable components</p>
-                            <p>• Focused on modern design, clean code structure, and user experience</p>
-                        </div>
+                        I’m Rishi — an engineering student figuring things out one project at a time. I code, design, edit videos, work with AI, and create CNC wood-relief designs. I like learning by actually building things, whether that means writing code at a laptop or turning a piece of wood into something completely different. I’m still figuring out where all of this leads, but for now, I’m enjoying the process.
                     </div>
                 </section>
 
@@ -541,61 +429,54 @@ export default function About() {
                 <section class="section">
                     <h2 class="section-title">Education</h2>
                     <div class="education-item">
-                        <h3>Senior Secondary Education (Class 12 - PCMB)</h3>
-                        <p>Currently pursuing Class 12 with Physics, Chemistry, Mathematics, and Biology</p>
+                        <h3>B.E. in Information Science & Engineering</h3>
+                        <p>Sri Dharmasthala Manjunatheshwara Institute of Technology (SDMIT), Ujire</p>
+                        <p>Expected Graduation: 2028</p>
                     </div>
                 </section>
 
-                <!-- Strengths -->
+                <!-- Focus Areas -->
                 <section class="section">
-                    <h2 class="section-title">Key Strengths</h2>
-                    <div class="strengths-list">
-                        <div class="strength-item">
-                            <span class="strength-icon">✔</span>
-                            <p>Fast Learner</p>
-                        </div>
-                        <div class="strength-item">
-                            <span class="strength-icon">✔</span>
-                            <p>Creative Problem Solving</p>
-                        </div>
-                        <div class="strength-item">
-                            <span class="strength-icon">✔</span>
-                            <p>Strong Interest in Technology</p>
-                        </div>
-                        <div class="strength-item">
-                            <span class="strength-icon">✔</span>
-                            <p>Consistent Self-Learning</p>
-                        </div>
-                        <div class="strength-item">
-                            <span class="strength-icon">✔</span>
-                            <p>Team Collaboration</p>
-                        </div>
-                        <div class="strength-item">
-                            <span class="strength-icon">✔</span>
-                            <p>Goal-Oriented Approach</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Career Objective -->
-                <section class="section">
-                    <h2 class="section-title">Career Objective</h2>
-                    <div class="objective-box">
-                        To build a successful career in the tech industry by continuously improving my skills in frontend development, cybersecurity, and AI technologies while contributing to innovative and impactful projects.
-                    </div>
-                </section>
-
-                <!-- Additional Interests -->
-                <section class="section">
-                    <h2 class="section-title">Additional Interests</h2>
+                    <h2 class="section-title">Areas of Exploration & Skills</h2>
                     <div class="skills-grid">
                         <div class="skill-category">
-                            <h3>Technical Interests</h3>
+                            <h3>Software & Web Development</h3>
                             <div class="skill-tags">
-                                <span class="skill-tag">Cybersecurity</span>
-                                <span class="skill-tag">Ethical Hacking</span>
-                                <span class="skill-tag">Artificial Intelligence</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">React.js</span>
+                                <span class="skill-tag">Next.js</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Tailwind CSS</span>
                             </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Creative Tech & Fabrication</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">AI / ML</span>
+                                <span class="skill-tag">Generative AI</span>
+                                <span class="skill-tag">CNC Wood-Relief</span>
+                                <span class="skill-tag">Creative Design</span>
+                                <span class="skill-tag">Video Editing</span>
+                                <span class="skill-tag">Git & GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2 class="section-title">Featured Work</h2>
+                    <div class="section-content">
+                        <div class="project">
+                            <h3>Interactive Web & 3D Applications</h3>
+                            <p>• Built interactive digital interfaces using modern web frameworks and 3D rendering.</p>
+                            <p>• Integrated animations and responsive design systems.</p>
+                        </div>
+                        <div class="project">
+                            <h3>CNC Design & Digital Fabrication</h3>
+                            <p>• Created intricate wood-relief carvings, digital toolpaths, and precision craft design.</p>
+                            <p>• Showcase profiles on Instagram (@risshhiiicreates & @risshhiiidrawss).</p>
                         </div>
                     </div>
                 </section>
@@ -614,7 +495,7 @@ export default function About() {
 
         const a = document.createElement("a");
         a.href = url;
-        a.download = "Prince_Kumar_Resume.html";
+        a.download = "Rishi_Gudigar_Resume.html";
 
         document.body.appendChild(a);
         a.click();
@@ -684,8 +565,8 @@ export default function About() {
           className="flex flex-col items-center"
         >
           <img
-            src="/assets/prince.png"
-            alt="Prince Kumar"
+            src="/assets/rishi.jpg"
+            alt="Rishi Gudigar"
             className="
               w-[200px]
               sm:w-[280px]
@@ -805,53 +686,36 @@ export default function About() {
                 space-y-6
               "
             >
-              <p>
-                I'm currently a Class 12 student with PCMB, but honestly,
-                my main interest is not in Biology anymore. Before 9th class,
-                I used to think that I would go into the medical field in the
-                future, but as time passed, I started getting more interested
-                in computers and technology.
+              <p className="text-white/80 text-base sm:text-lg leading-relaxed">
+                {personalData.aboutMainText}
               </p>
 
-              <p>
-                In 11th class, I explored coding more seriously and slowly
-                developed a strong interest in programming, cybersecurity,
-                and AI.
-              </p>
+              <div className="pt-4 border-t border-white/10 space-y-3">
+                <h3 className="text-white font-semibold text-lg">Education & Background</h3>
+                <div className="space-y-1 font-mono text-sm">
+                  <p className="text-white font-medium">🎓 {personalData.education.degree}</p>
+                  <p className="text-white/70">{personalData.education.institution}</p>
+                  <p className="text-white/40">{personalData.education.expectedGraduation} · {personalData.location}</p>
+                </div>
+              </div>
 
-              <p>
-                Now, coding is something I genuinely enjoy. I like learning
-                new programming languages, building things, and understanding
-                how technology works behind the scenes.
-              </p>
-
-              <p>
-                Out of everything in tech, ethical hacking and cybersecurity
-                interest me the most because I find it exciting to learn about
-                system security, vulnerabilities, and how hackers think.
-              </p>
-
-              <p>
-                At the same time, I also enjoy using AI tools and understanding
-                how AI can make work smarter and easier.
-              </p>
-
-              <p>
-                After completing Class 12, I want to move completely into the
-                coding and tech field. My goal is to build a future in
-                cybersecurity, ethical hacking, and AI.
-              </p>
-
-              <p>
-                I know there's still a lot to learn, but I enjoy the process
-                and always try to improve my skills step by step.
-              </p>
-
-              <p>
-                For me, technology is not just a career option anymore —
-                it's something I truly connect with and see myself doing
-                in the future.
-              </p>
+              <div className="pt-4 border-t border-white/10 space-y-3">
+                <h3 className="text-white font-semibold text-lg">Focus Areas</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  <div className="p-3.5 rounded-xl border border-blue-500/20 bg-blue-500/5 space-y-1">
+                    <span className="text-xs font-mono text-blue-300 font-bold block">01 — TECH</span>
+                    <span className="text-xs text-white/70 font-sans block">Software & Modern Web Applications</span>
+                  </div>
+                  <div className="p-3.5 rounded-xl border border-purple-500/20 bg-purple-500/5 space-y-1">
+                    <span className="text-xs font-mono text-purple-300 font-bold block">02 — ART</span>
+                    <span className="text-xs text-white/70 font-sans block">Sketches, Anime & Digital Illustrations</span>
+                  </div>
+                  <div className="p-3.5 rounded-xl border border-amber-500/20 bg-amber-500/5 space-y-1">
+                    <span className="text-xs font-mono text-amber-300 font-bold block">03 — CRAFT</span>
+                    <span className="text-xs text-white/70 font-sans block">CNC Wood-Relief & Physical Carvings</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

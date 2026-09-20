@@ -4,182 +4,181 @@ import { Link, useNavigate } from "react-router-dom";
 
 const BandCard = lazy(() => import("./BandCard"));
 
+import { personalData } from "@/data/portfolioData";
+
 export default function FrontendDeveloperSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { amount: 0.4 });
 
   const [showCard, setShowCard] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [goAbout, setGoAbout] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => setMounted(true), []);
 
-  // page exit → navigate after animation
-  useEffect(() => {
-    if (goAbout) {
-      const t = setTimeout(() => {
-        navigate("/about");
-      }, 1800);
-
-      return () => clearTimeout(t);
-    }
-  }, [goAbout, navigate]);
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-
     <motion.section
       ref={ref}
-      id="frontend"
+      id="hero-intro"
       initial={{
         x: 0,
         scale: 1,
         opacity: 1,
         filter: "blur(0px)",
       }}
-      animate={
-        goAbout
-          ? {
-            x: "-40vw",
-            scale: 0.92,
-            opacity: 0,
-            filter: "blur(8px)",
-          }
-          : {
-            x: 0,
-            scale: 1,
-            opacity: 1,
-            filter: "blur(0px)",
-          }
-      }
-      transition={{
-        duration: 1.8,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="relative w-full min-h-screen bg-black text-white overflow-hidden flex items-start px-6 md:px-20 pt-16 md:pt-28 select-none"
+      className="relative w-full min-h-screen bg-black text-white overflow-hidden flex flex-col justify-center px-6 md:px-20 py-20 select-none"
     >
-      {/* TEXT */}
-      <div className="relative z-10 max-w-2xl">
-        <motion.div className="flex items-center mb-6">
-          <motion.span
-            animate={{
-              width: ["0ch", "32ch", "32ch", "0ch"],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              times: [0, 0.3, 0.8, 1],
-            }}
-            className="inline-block overflow-hidden whitespace-nowrap text-[11px] tracking-[0.3em] uppercase text-white/60 font-mono"
-          >
-            ✦ Available for work
-          </motion.span>
+      {/* TEXT CONTENT */}
+      <div className="relative z-10 max-w-3xl">
+        {/* Availability & Subtle Micro-Text */}
+        <motion.div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6">
+          <div className="flex items-center">
+            <motion.span
+              animate={{
+                width: ["0ch", "32ch", "32ch", "0ch"],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.3, 0.8, 1],
+              }}
+              className="inline-block overflow-hidden whitespace-nowrap text-[11px] tracking-[0.3em] uppercase text-white/70 font-mono"
+            >
+              ✦ Available for projects
+            </motion.span>
 
-          <motion.span
-            animate={{
-              opacity: [1, 0, 1],
-            }}
-            transition={{
-              duration: 0.8,
-              repeat: Infinity,
-            }}
-            className="text-white/60 font-mono ml-[2px]"
-          >
-            |
-          </motion.span>
+            <motion.span
+              animate={{
+                opacity: [1, 0, 1],
+              }}
+              transition={{
+                duration: 0.8,
+                repeat: Infinity,
+              }}
+              className="text-white/60 font-mono ml-[2px]"
+            >
+              |
+            </motion.span>
+          </div>
+
+          <span className="hidden sm:inline text-white/30 font-mono text-xs">·</span>
+
+          <span className="text-[11px] tracking-wider text-white/40 font-mono italic">
+            "{personalData.microText}"
+          </span>
         </motion.div>
 
-        <div>
+        {/* Large Bold Typography */}
+        <div className="space-y-1 sm:space-y-2 mb-6">
           <motion.h1
-            initial={{ opacity: 0, scale: 0.85, y: 50 }}
-            animate={inView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.85, y: 50 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold leading-[1.05] tracking-tight text-white text-[clamp(56px,9vw,120px)]"
+            initial={{ opacity: 0, scale: 0.88, y: 40 }}
+            animate={inView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.88, y: 40 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold leading-[0.92] tracking-tight text-white text-[clamp(44px,8vw,110px)]"
           >
-            Frontend
+            {personalData.heroHeading.line1}
           </motion.h1>
 
           <motion.h1
-            initial={{ opacity: 0, x: -80, rotate: -4 }}
-            animate={inView ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: -80, rotate: -4 }}
-            transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold leading-[1.05] tracking-tight text-white/70 text-[clamp(56px,9vw,120px)] mb-6"
+            initial={{ opacity: 0, x: -60, rotate: -2 }}
+            animate={inView ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: -60, rotate: -2 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold leading-[0.92] tracking-tight text-white text-[clamp(44px,8vw,110px)]"
           >
-            Developer
+            {personalData.heroHeading.line2}
+          </motion.h1>
+
+          <motion.h1
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold leading-[0.92] tracking-tight text-white/55 text-[clamp(44px,8vw,110px)]"
+          >
+            {personalData.heroHeading.line3}
           </motion.h1>
         </div>
 
+        {/* Subtle tagline line */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="relative text-sm sm:text-base lg:text-xl
-    leading-relaxed max-w-md
-    font-[Poppins] font-medium
-    tracking-wide
-    text-transparent bg-clip-text
-    bg-[length:200%_auto]
-    bg-gradient-to-r
-    from-white via-white/60 to-white
-    animate-[shine_4s_linear_infinite]"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-xs sm:text-sm font-mono tracking-[0.2em] text-white/50 uppercase mb-4"
         >
-          Building modern websites with clean, responsive, elegant interfaces.
-          Turning ideas and designs into engaging digital experiences.
+          {personalData.tagline}
         </motion.p>
 
+        {/* Hero description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-[Poppins] text-white/80"
+        >
+          {personalData.heroDescription}
+        </motion.p>
+
+        {/* Skill Pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 flex flex-wrap gap-4"
+          transition={{ duration: 0.8, delay: 0.65 }}
+          className="mt-6 flex flex-wrap gap-2.5 sm:gap-3"
         >
-          {["Next.js", "React.js", "TypeScript", "Tailwind CSS"].map((tech) => (
+          {personalData.heroSkills.map((tech) => (
             <div
               key={tech}
               className="
-        relative group px-5 py-2.5 rounded-2xl
-        text-sm font-medium text-white/90
-        bg-white/5 backdrop-blur-xl
-        border border-white/10
-        overflow-hidden
-        transition-all duration-300
-      "
+                relative group px-4 py-2 rounded-xl
+                text-xs sm:text-sm font-medium text-white/85
+                bg-white/5 backdrop-blur-xl
+                border border-white/10
+                overflow-hidden
+                transition-all duration-300 hover:border-white/30 hover:text-white
+              "
             >
-              {/* animated border fill */}
-              <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 bg-gradient-to-r from-white/20 via-white/10 to-transparent"></span>
-
-              {/* glowing border line */}
-              <span className="absolute inset-0 rounded-2xl border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-
-              {/* text */}
               <span className="relative z-10">{tech}</span>
             </div>
           ))}
         </motion.div>
 
-        <div className="mt-8 flex flex-col [@media(min-width:540px)]:flex-row items-start md:items-center gap-4">
-          {/* Show Card Button */}
+        {/* Hero Buttons */}
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          {/* VIEW MY WORK Button */}
           <motion.button
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            onClick={() => setShowCard((s) => !s)}
-            className="inline-flex items-center gap-2 border border-accent text-accent px-6 py-3 text-xs tracking-[0.25em] uppercase font-semibold hover:bg-accent hover:text-black transition-all duration-200 rounded-full relative z-20"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            onClick={() => scrollToSection("work")}
+            className="inline-flex items-center gap-2 border border-white/80 bg-white text-black px-7 py-3 text-xs tracking-[0.2em] uppercase font-bold hover:bg-transparent hover:text-white hover:border-white transition-all duration-300 rounded-full shadow-lg shadow-white/10"
           >
-            {showCard ? "Hide Card" : "Show Card"}
+            VIEW MY WORK →
           </motion.button>
 
-          {/* About Button */}
+          {/* ABOUT ME Button */}
           <motion.button
-            initial={{ opacity: 0, x: 80 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.1, delay: 1.4 }}
-            onClick={() => setGoAbout(true)}
-            className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 text-xs uppercase font-bold hover:bg-white hover:text-black rounded-full transition"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            onClick={() => scrollToSection("about")}
+            className="inline-flex items-center gap-2 border border-white/20 text-white px-7 py-3 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-white/10 hover:border-white/40 rounded-full transition-all duration-300"
           >
-            About Me
+            ABOUT ME
+          </motion.button>
+
+          {/* Interactive 3D ID Card toggle */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 1 }}
+            onClick={() => setShowCard((s) => !s)}
+            className="inline-flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-mono tracking-wider transition-colors px-3 py-2"
+          >
+            {showCard ? "✕ Close 3D Card" : "✦ 3D Card"}
           </motion.button>
         </div>
       </div>

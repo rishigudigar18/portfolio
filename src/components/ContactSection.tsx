@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { FaInstagram, FaGithub, FaYoutube, FaTelegram } from "react-icons/fa";
 
 
+import { personalData } from "@/data/portfolioData";
+
 export default function ContactSection() {
     const [form, setForm] = useState({
         name: "",
@@ -24,12 +26,11 @@ export default function ContactSection() {
     const handleSend = () => {
         if (!form.name || !form.message) return;
 
-        const text = `Hello, my name is ${form.name}%0A%0A${form.message}`;
-
-        const phone = "91000000000";
+        const subject = encodeURIComponent(`Message from ${form.name} via Portfolio`);
+        const body = encodeURIComponent(`Hello Rishi,\n\nMy name is ${form.name}.\n\n${form.message}`);
 
         window.open(
-            `https://wa.me/${phone}?text=${text}`,
+            `mailto:${personalData.email}?subject=${subject}&body=${body}`,
             "_blank"
         );
     };
@@ -105,7 +106,7 @@ export default function ContactSection() {
                                 from-white via-white to-white/45
                                 bg-clip-text text-transparent"
                             >
-                                Let's Build Together
+                                LET'S MAKE SOMETHING.
                             </span>
                         </h1>
                     </div>
@@ -136,19 +137,17 @@ export default function ContactSection() {
     from-white via-white/60 to-white
     animate-[shine_4s_linear_infinite]"
                             >
-                                Have an idea, project, or collaboration in mind?
-                                Send me a message and let’s create something
-                                clean, modern, and impactful together.
+                                Got an idea, project, collaboration, or just something interesting to build? I'm always open to hearing about it.
                             </p>
 
                         </div>
 
                         {/* social icons */}
-                        <div className="flex items-center justify-center lg:justify-start gap-5 mt-2">
+                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-2">
 
                             {/* gmail */}
                             <a
-                                href="mailto:sprince05873@gmail.com"
+                                href={`mailto:${personalData.email}`}
                                 className="group relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl
                 border border-white/10
                 bg-white/[0.04]
@@ -159,6 +158,7 @@ export default function ContactSection() {
                 hover:border-white/30
                 hover:bg-white/[0.08]
                 hover:shadow-[0_0_25px_rgba(255,255,255,0.12)]"
+                                title={personalData.email}
                             >
                                 <FaEnvelope
                                     className="text-white/80 group-hover:text-white
@@ -176,9 +176,9 @@ export default function ContactSection() {
                                 />
                             </a>
 
-                            {/* whatsapp */}
+                            {/* Personal Instagram */}
                             <a
-                                href="https://wa.me/910000000000"
+                                href={personalData.instagramPersonal}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl
@@ -188,13 +188,14 @@ export default function ContactSection() {
                 flex items-center justify-center
                 transition-all duration-300
                 hover:scale-110
-                hover:border-green-400/40
-                hover:bg-green-500/10
-                hover:shadow-[0_0_30px_rgba(34,197,94,0.25)]"
+                hover:border-white/30
+                hover:bg-white/[0.08]
+                hover:shadow-[0_0_25px_rgba(255,255,255,0.12)]"
+                                title={`Personal Instagram: ${personalData.instagramPersonalHandle}`}
                             >
-                                <FaWhatsapp
-                                    className="text-white/80 group-hover:text-green-400
-                    text-[20px] sm:text-[24px]
+                                <FaInstagram
+                                    className="text-white/80 group-hover:text-white
+                    text-[18px] sm:text-[20px]
                     transition-all duration-300"
                                 />
 
@@ -203,11 +204,42 @@ export default function ContactSection() {
                     group-hover:opacity-100 transition-opacity duration-300"
                                     style={{
                                         background:
-                                            "linear-gradient(135deg, rgba(34,197,94,0.08), transparent)",
+                                            "linear-gradient(135deg, rgba(255,255,255,0.08), transparent)",
                                     }}
                                 />
+                            </a>
 
-                                <div className="absolute inset-0 rounded-2xl border border-green-400/30 animate-ping" />
+                            {/* GitHub */}
+                            <a
+                                href={personalData.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl
+                border border-white/10
+                bg-white/[0.04]
+                backdrop-blur-xl
+                flex items-center justify-center
+                transition-all duration-300
+                hover:scale-110
+                hover:border-white/30
+                hover:bg-white/[0.08]
+                hover:shadow-[0_0_25px_rgba(255,255,255,0.12)]"
+                                title="GitHub: rishigudigar18"
+                            >
+                                <FaGithub
+                                    className="text-white/80 group-hover:text-white
+                    text-[18px] sm:text-[20px]
+                    transition-all duration-300"
+                                />
+
+                                <div
+                                    className="absolute inset-0 rounded-2xl opacity-0
+                    group-hover:opacity-100 transition-opacity duration-300"
+                                    style={{
+                                        background:
+                                            "linear-gradient(135deg, rgba(255,255,255,0.08), transparent)",
+                                    }}
+                                />
                             </a>
                         </div>
                     </div>
@@ -532,19 +564,19 @@ export default function ContactSection() {
                     </h2>
                     
                     <div className="flex flex-wrap items-center justify-center gap-5">
-                        {/* Instagram */}
+                        {/* Personal Instagram */}
                         <a
-                            href="https://www.instagram.com/prince_kumar_74_"
+                            href={personalData.instagramPersonal}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Instagram"
+                            aria-label="Personal Instagram"
+                            title={`Personal: ${personalData.instagramPersonalHandle}`}
                             className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-[20px]
     border border-white/10 bg-white/[0.05] backdrop-blur-2xl
     shadow-[0_10px_30px_rgba(0,0,0,0.28)]
     transition-all duration-500 ease-out
     hover:-translate-y-1.5 hover:scale-105 hover:border-white/30"
                         >
-                            {/* YOUR INSTAGRAM GRADIENT */}
                             <div
                                 className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                                 style={{
@@ -552,23 +584,68 @@ export default function ContactSection() {
                                         "linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7)",
                                 }}
                             />
-
-                            {/* inner dark glass */}
                             <div className="absolute inset-[1px] rounded-[19px] bg-[#0b0b12]/80" />
-
-                            {/* glow */}
                             <div className="absolute -inset-6 blur-2xl transition-all duration-500 group-hover:bg-white/10" />
-
-                            {/* icon */}
                             <FaInstagram className="relative z-10 text-[30px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-white" />
+                        </a>
+
+                        {/* Instagram Art */}
+                        <a
+                            href={personalData.instagramArt}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram Art"
+                            title={`Art: ${personalData.instagramArtHandle}`}
+                            className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-[20px]
+    border border-white/10 bg-white/[0.05] backdrop-blur-2xl
+    shadow-[0_10px_30px_rgba(0,0,0,0.28)]
+    transition-all duration-500 ease-out
+    hover:-translate-y-1.5 hover:scale-105 hover:border-purple-400/40"
+                        >
+                            <div
+                                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                                style={{
+                                    background:
+                                        "linear-gradient(45deg, #a855f7, #ec4899, #6366f1)",
+                                }}
+                            />
+                            <div className="absolute inset-[1px] rounded-[19px] bg-[#0b0b12]/80" />
+                            <div className="absolute -inset-6 blur-2xl transition-all duration-500 group-hover:bg-purple-500/20" />
+                            <FaInstagram className="relative z-10 text-[30px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-purple-200" />
+                        </a>
+
+                        {/* Instagram CNC & Creates */}
+                        <a
+                            href={personalData.instagramCnc}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram CNC"
+                            title={`CNC & Creates: ${personalData.instagramCncHandle}`}
+                            className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-[20px]
+    border border-white/10 bg-white/[0.05] backdrop-blur-2xl
+    shadow-[0_10px_30px_rgba(0,0,0,0.28)]
+    transition-all duration-500 ease-out
+    hover:-translate-y-1.5 hover:scale-105 hover:border-amber-400/40"
+                        >
+                            <div
+                                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                                style={{
+                                    background:
+                                        "linear-gradient(45deg, #f59e0b, #d97706, #78350f)",
+                                }}
+                            />
+                            <div className="absolute inset-[1px] rounded-[19px] bg-[#0b0b12]/80" />
+                            <div className="absolute -inset-6 blur-2xl transition-all duration-500 group-hover:bg-amber-500/20" />
+                            <FaInstagram className="relative z-10 text-[30px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-amber-200" />
                         </a>
 
                         {/* GitHub */}
                         <a
-                            href="https://github.com/princekumar-dev74"
+                            href={personalData.github}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="GitHub"
+                            title={`GitHub: ${personalData.githubUsername}`}
                             className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-[20px]
         border border-white/10 bg-white/[0.05] backdrop-blur-2xl
         shadow-[0_10px_30px_rgba(0,0,0,0.28)]
@@ -582,57 +659,58 @@ export default function ContactSection() {
                             <FaGithub className="relative z-10 text-[30px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-white" />
                         </a>
 
-                        {/* YouTube */}
+                        {/* LinkedIn */}
                         <a
-                            href="https://www.youtube.com/@WebKaizenDev"
+                            href={personalData.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="YouTube"
+                            aria-label="LinkedIn"
+                            title="LinkedIn: Rishi Gudigar"
                             className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-[20px]
         border border-white/10 bg-white/[0.05] backdrop-blur-2xl
         shadow-[0_10px_30px_rgba(0,0,0,0.28)]
         transition-all duration-500 ease-out
-        hover:-translate-y-1.5 hover:scale-105 hover:border-red-400/50"
+        hover:-translate-y-1.5 hover:scale-105 hover:border-blue-400/40"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-red-500/18 via-rose-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-sky-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                             <div className="absolute inset-[1px] rounded-[19px] bg-[#0b0b12]/80" />
-                            <div className="absolute -inset-6 bg-red-500/0 blur-2xl transition-all duration-500 group-hover:bg-red-500/20" />
+                            <div className="absolute -inset-6 bg-blue-500/0 blur-2xl transition-all duration-500 group-hover:bg-blue-500/20" />
 
-                            <FaYoutube className="relative z-10 text-[30px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-red-400" />
+                            <svg className="relative z-10 w-6 h-6 text-white transition-all duration-500 group-hover:scale-110 group-hover:text-sky-300 fill-current" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
                         </a>
 
-                        {/* Telegram */}
+                        {/* Email */}
                         <a
-                            href="https://t.me/web_kaizen_official"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Telegram"
+                            href={`mailto:${personalData.email}`}
+                            aria-label="Email"
+                            title={`Email: ${personalData.email}`}
                             className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-[20px]
         border border-white/10 bg-white/[0.05] backdrop-blur-2xl
         shadow-[0_10px_30px_rgba(0,0,0,0.28)]
         transition-all duration-500 ease-out
-        hover:-translate-y-1.5 hover:scale-105 hover:border-sky-400/50"
+        hover:-translate-y-1.5 hover:scale-105 hover:border-blue-400/50"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-sky-500/18 via-cyan-400/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/18 via-sky-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                             <div className="absolute inset-[1px] rounded-[19px] bg-[#0b0b12]/80" />
-                            <div className="absolute -inset-6 bg-sky-500/0 blur-2xl transition-all duration-500 group-hover:bg-sky-500/20" />
+                            <div className="absolute -inset-6 bg-blue-500/0 blur-2xl transition-all duration-500 group-hover:bg-blue-500/20" />
 
-                            <FaTelegram className="relative z-10 text-[30px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-sky-400" />
+                            <FaEnvelope className="relative z-10 text-[26px] text-white transition-all duration-500 group-hover:scale-110 group-hover:text-blue-300" />
                         </a>
                     </div>
 
                     <div className="h-px w-32 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-<p className="text-center text-sm tracking-[0.22em] text-white/35">
-  Copyright © {new Date().getFullYear()} All Rights Reserved | Created by{" "}
-  
-  <span className="relative inline-block text-white/70">
-    prince
-    <span className="absolute left-1/2 -translate-x-1/2 -bottom-2">
-      <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-    </span>
-  </span>
-</p>
+                    {/* Clean Minimal Footer */}
+                    <div className="text-center space-y-2">
+                        <p className="text-xs sm:text-sm font-mono tracking-[0.25em] uppercase text-white/80 font-bold">
+                            {personalData.name} · © {new Date().getFullYear()}
+                        </p>
+                        <p className="text-xs font-mono tracking-wider text-white/40 italic">
+                            "{personalData.tagline}"
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
