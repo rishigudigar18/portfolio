@@ -29,7 +29,7 @@ export default function FrontendDeveloperSection() {
         opacity: 1,
         filter: "blur(0px)",
       }}
-      className="relative w-full min-h-screen bg-black text-white overflow-hidden flex flex-col justify-center px-5 sm:px-8 md:px-20 py-16 sm:py-20 select-none"
+      className="relative w-full min-h-screen bg-black text-white overflow-hidden flex flex-col justify-center px-5 sm:px-8 md:px-20 py-12 sm:py-16 md:py-20 select-none"
     >
       {/* TEXT CONTENT */}
       <div className="relative z-10 max-w-3xl">

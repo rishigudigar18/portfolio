@@ -218,27 +218,27 @@ export default function App() {
 
           <section
             id="Home"
-            className="relative w-full min-h-[100dvh] md:h-screen overflow-hidden bg-black flex flex-col justify-between"
+            className="relative w-full min-h-0 md:min-h-screen md:h-screen overflow-hidden bg-black flex flex-col justify-between"
           >
             {/* Background image presentation */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="relative h-[65%] sm:h-[80%] md:h-[85%] w-[92%] sm:w-[85%] max-w-xl flex items-center justify-center overflow-hidden rounded-3xl">
+              <div className="relative h-full md:h-[85%] w-full sm:w-[85%] max-w-xl flex items-center justify-center overflow-hidden rounded-none md:rounded-3xl">
                 <img
                   src={heroImg}
                   alt="Rishi Gudigar"
-                  className="h-full w-full object-cover object-top opacity-60 md:opacity-75 filter contrast-105 brightness-95"
+                  className="h-full w-full object-cover object-top opacity-50 md:opacity-75 filter contrast-105 brightness-95"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/80 md:to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80 md:to-black/70" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-transparent to-black/95 md:from-black/80 md:to-black/80" />
               </div>
             </div>
 
-            <div className="relative z-10 w-full h-full flex flex-col justify-between px-5 sm:px-8 md:px-12 pt-20 sm:pt-24 pb-8 md:pb-10">
-              {/* Giant Name Display */}
-              <div>
+            <div className="relative z-10 w-full flex-1 flex flex-col justify-between px-5 sm:px-8 md:px-12 pt-20 sm:pt-24 pb-8 md:pb-10">
+              {/* Giant Name Display - Desktop */}
+              <div className="hidden md:block">
                 <h1
                   onClick={() => setColorMode((prev) => (prev + 1) % colors.length)}
-                  className={`font-display uppercase leading-[0.85] tracking-[-0.03em] text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[13rem] cursor-pointer transition-all duration-300 select-none ${colors[colorMode]}`}
+                  className={`font-display uppercase leading-[0.85] tracking-[-0.03em] text-[14vw] lg:text-[13rem] cursor-pointer transition-all duration-300 select-none ${colors[colorMode]}`}
                 >
                   {displayed || "\u00A0"}
                 </h1>
@@ -247,24 +247,24 @@ export default function App() {
               {/* Tagline & Identity Statement */}
               <div className="md:absolute md:top-28 md:right-12 mt-2 md:mt-0 text-left md:text-right max-w-md">
                 {/* 3 Minimal Badges: CODE · ART · CRAFT */}
-                <div className="flex md:justify-end items-center gap-2 mb-2">
+                <div className="flex md:justify-end items-center gap-2 mb-3">
                   <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest bg-white/10 text-white/80 border border-white/15 uppercase">CODE</span>
                   <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest bg-purple-500/15 text-purple-300 border border-purple-500/30 uppercase">ART</span>
                   <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase">CRAFT</span>
                 </div>
 
-                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.08] font-black tracking-tight text-white">
+                <p className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl leading-[1.08] font-black tracking-tight text-white">
                   I BUILD.<br />
                   I DRAW.<br />
                   <span className="text-white/50">I CREATE.</span>
                 </p>
-                <p className="text-[11px] sm:text-xs font-mono tracking-wider text-white/50 uppercase mt-1.5 md:mt-3">
+                <p className="text-[11px] sm:text-xs font-mono tracking-wider text-white/50 uppercase mt-2 md:mt-3">
                   "{personalData.tagline}"
                 </p>
               </div>
 
               {/* Description and CTA Buttons */}
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-5 mt-auto pt-4 sm:pt-6">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mt-6 md:mt-auto pt-2 md:pt-6">
                 <p className="relative text-xs sm:text-sm md:text-base leading-relaxed max-w-lg font-[Poppins] font-normal text-white/75">
                   {personalData.heroDescription}
                 </p>
