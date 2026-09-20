@@ -29,7 +29,7 @@ export default function FrontendDeveloperSection() {
         opacity: 1,
         filter: "blur(0px)",
       }}
-      className="relative w-full min-h-screen bg-black text-white overflow-hidden flex flex-col justify-center px-6 md:px-20 py-20 select-none"
+      className="relative w-full min-h-screen bg-black text-white overflow-hidden flex flex-col justify-center px-5 sm:px-8 md:px-20 py-16 sm:py-20 select-none"
     >
       {/* TEXT CONTENT */}
       <div className="relative z-10 max-w-3xl">
@@ -78,7 +78,7 @@ export default function FrontendDeveloperSection() {
             initial={{ opacity: 0, scale: 0.88, y: 40 }}
             animate={inView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.88, y: 40 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold leading-[0.92] tracking-tight text-white text-[clamp(44px,8vw,110px)]"
+            className="font-extrabold leading-[0.92] tracking-tight text-white text-[clamp(40px,8vw,110px)]"
           >
             {personalData.heroHeading.line1}
           </motion.h1>
@@ -87,7 +87,7 @@ export default function FrontendDeveloperSection() {
             initial={{ opacity: 0, x: -60, rotate: -2 }}
             animate={inView ? { opacity: 1, x: 0, rotate: 0 } : { opacity: 0, x: -60, rotate: -2 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold leading-[0.92] tracking-tight text-white text-[clamp(44px,8vw,110px)]"
+            className="font-extrabold leading-[0.92] tracking-tight text-white text-[clamp(40px,8vw,110px)]"
           >
             {personalData.heroHeading.line2}
           </motion.h1>
@@ -96,7 +96,7 @@ export default function FrontendDeveloperSection() {
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold leading-[0.92] tracking-tight text-white/55 text-[clamp(44px,8vw,110px)]"
+            className="font-extrabold leading-[0.92] tracking-tight text-white/55 text-[clamp(40px,8vw,110px)]"
           >
             {personalData.heroHeading.line3}
           </motion.h1>
@@ -117,7 +117,7 @@ export default function FrontendDeveloperSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="relative text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-[Poppins] text-white/80"
+          className="relative text-xs sm:text-base lg:text-lg leading-relaxed max-w-xl font-[Poppins] text-white/80"
         >
           {personalData.heroDescription}
         </motion.p>
@@ -127,13 +127,13 @@ export default function FrontendDeveloperSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-6 flex flex-wrap gap-2.5 sm:gap-3"
+          className="mt-6 flex flex-wrap gap-2 sm:gap-3"
         >
           {personalData.heroSkills.map((tech) => (
             <div
               key={tech}
               className="
-                relative group px-4 py-2 rounded-xl
+                relative group px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl
                 text-xs sm:text-sm font-medium text-white/85
                 bg-white/5 backdrop-blur-xl
                 border border-white/10
@@ -147,14 +147,14 @@ export default function FrontendDeveloperSection() {
         </motion.div>
 
         {/* Hero Buttons */}
-        <div className="mt-8 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
           {/* VIEW MY WORK Button */}
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
             onClick={() => scrollToSection("work")}
-            className="inline-flex items-center gap-2 border border-white/80 bg-white text-black px-7 py-3 text-xs tracking-[0.2em] uppercase font-bold hover:bg-transparent hover:text-white hover:border-white transition-all duration-300 rounded-full shadow-lg shadow-white/10"
+            className="flex-1 sm:flex-initial text-center justify-center inline-flex items-center gap-2 border border-white/80 bg-white text-black px-6 sm:px-7 py-3 text-xs tracking-[0.2em] uppercase font-bold hover:bg-transparent hover:text-white hover:border-white transition-all duration-300 rounded-full shadow-lg shadow-white/10"
           >
             VIEW MY WORK →
           </motion.button>
@@ -165,7 +165,7 @@ export default function FrontendDeveloperSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.9 }}
             onClick={() => scrollToSection("about")}
-            className="inline-flex items-center gap-2 border border-white/20 text-white px-7 py-3 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-white/10 hover:border-white/40 rounded-full transition-all duration-300"
+            className="flex-1 sm:flex-initial text-center justify-center inline-flex items-center gap-2 border border-white/20 text-white px-6 sm:px-7 py-3 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-white/10 hover:border-white/40 rounded-full transition-all duration-300"
           >
             ABOUT ME
           </motion.button>
@@ -176,7 +176,7 @@ export default function FrontendDeveloperSection() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 1 }}
             onClick={() => setShowCard((s) => !s)}
-            className="inline-flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-mono tracking-wider transition-colors px-3 py-2"
+            className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-mono tracking-wider transition-colors px-3 py-2"
           >
             {showCard ? "✕ Close 3D Card" : "✦ 3D Card"}
           </motion.button>

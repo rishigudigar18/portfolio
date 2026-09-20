@@ -81,15 +81,15 @@ export default function App() {
         <div className="min-h-screen bg-black text-white overflow-x-hidden">
           <AnimatePresence>{showWelcome && <WelcomeScreen />}</AnimatePresence>
 
-          <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 backdrop-blur-xl bg-black/20 border-b border-white/10">
-            <div className="flex items-center gap-3">
+          <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-12 py-3.5 sm:py-5 backdrop-blur-xl bg-black/40 border-b border-white/10">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <img
                 src={favicon}
                 alt="Logo"
-                className="w-8 h-8 rounded-full object-cover"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover"
               />
 
-              <span className="text-[10px] md:text-xs tracking-[0.3em] text-white/70 uppercase font-medium">
+              <span className="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] text-white/80 uppercase font-medium truncate max-w-[210px] sm:max-w-none">
                 {personalData.name} · PORTFOLIO
               </span>
             </div>
@@ -145,9 +145,10 @@ export default function App() {
 
             <button
               onClick={() => setMobileMenu(!mobileMenu)}
-              className="md:hidden text-white z-50"
+              className="md:hidden text-white z-50 p-1"
+              aria-label="Toggle Menu"
             >
-              {mobileMenu ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenu ? <X size={22} /> : <Menu size={22} />}
             </button>
           </nav>
 
@@ -155,7 +156,7 @@ export default function App() {
           {mobileMenu && (
             <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 text-white uppercase tracking-[0.3em] text-sm md:hidden">
 
-              <div className="absolute top-30 text-center">
+              <div className="absolute top-28 text-center">
                 <p className="text-[10px] text-white/40 tracking-[0.3em] mb-2">
                   TIME
                 </p>
@@ -217,50 +218,63 @@ export default function App() {
 
           <section
             id="Home"
-            className="relative w-full h-screen min-h-[640px] overflow-hidden bg-black"
+            className="relative w-full min-h-[100dvh] md:h-screen overflow-hidden bg-black flex flex-col justify-between"
           >
+            {/* Background image presentation */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="relative h-[85%] w-[85%] max-w-xl flex items-center justify-center overflow-hidden rounded-3xl">
+              <div className="relative h-[65%] sm:h-[80%] md:h-[85%] w-[92%] sm:w-[85%] max-w-xl flex items-center justify-center overflow-hidden rounded-3xl">
                 <img
                   src={heroImg}
                   alt="Rishi Gudigar"
-                  className="h-full w-full object-cover object-top opacity-70 filter contrast-105 brightness-95"
+                  className="h-full w-full object-cover object-top opacity-60 md:opacity-75 filter contrast-105 brightness-95"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/80 md:to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-transparent to-black/95 md:from-black/80 md:to-black/80" />
               </div>
             </div>
 
-            <div className="relative z-10 w-full h-full flex flex-col justify-between px-6 md:px-12 pt-24 pb-10">
-              <h1
-                onClick={() => setColorMode((prev) => (prev + 1) % colors.length)}
-                className={`font-display uppercase leading-[0.85] tracking-[-0.03em] text-[22vw] md:text-[14vw] lg:text-[13rem] cursor-pointer transition-all duration-300 ${colors[colorMode]}`}
-              >
-                {displayed || "\u00A0"}
-              </h1>
+            <div className="relative z-10 w-full h-full flex flex-col justify-between px-5 sm:px-8 md:px-12 pt-20 sm:pt-24 pb-8 md:pb-10">
+              {/* Giant Name Display */}
+              <div>
+                <h1
+                  onClick={() => setColorMode((prev) => (prev + 1) % colors.length)}
+                  className={`font-display uppercase leading-[0.85] tracking-[-0.03em] text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[13rem] cursor-pointer transition-all duration-300 select-none ${colors[colorMode]}`}
+                >
+                  {displayed || "\u00A0"}
+                </h1>
+              </div>
 
-              <div className="md:absolute md:top-28 md:right-12 mt-4 md:mt-0 text-right max-w-md">
-                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.05] font-black tracking-tight text-white">
+              {/* Tagline & Identity Statement */}
+              <div className="md:absolute md:top-28 md:right-12 mt-2 md:mt-0 text-left md:text-right max-w-md">
+                {/* 3 Minimal Badges: CODE · ART · CRAFT */}
+                <div className="flex md:justify-end items-center gap-2 mb-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest bg-white/10 text-white/80 border border-white/15 uppercase">CODE</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest bg-purple-500/15 text-purple-300 border border-purple-500/30 uppercase">ART</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase">CRAFT</span>
+                </div>
+
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.08] font-black tracking-tight text-white">
                   I BUILD.<br />
                   I DRAW.<br />
                   <span className="text-white/50">I CREATE.</span>
                 </p>
-                <p className="text-xs font-mono tracking-widest text-white/40 uppercase mt-3">
+                <p className="text-[11px] sm:text-xs font-mono tracking-wider text-white/50 uppercase mt-1.5 md:mt-3">
                   "{personalData.tagline}"
                 </p>
               </div>
 
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mt-auto">
-                <p className="relative text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg font-[Poppins] font-normal text-white/80">
+              {/* Description and CTA Buttons */}
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-5 mt-auto pt-4 sm:pt-6">
+                <p className="relative text-xs sm:text-sm md:text-base leading-relaxed max-w-lg font-[Poppins] font-normal text-white/75">
                   {personalData.heroDescription}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                   <a
                     href={personalData.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-white/10 text-white px-5 py-2.5 text-xs font-mono tracking-wider uppercase font-bold hover:bg-white hover:text-black border border-white/20 transition-all duration-300 rounded-full"
+                    className="flex-1 sm:flex-initial text-center justify-center inline-flex items-center gap-2 bg-white/10 text-white px-5 py-2.5 text-xs font-mono tracking-wider uppercase font-bold hover:bg-white hover:text-black border border-white/20 transition-all duration-300 rounded-full"
                   >
                     GITHUB →
                   </a>
@@ -268,7 +282,7 @@ export default function App() {
                     href={personalData.instagramPersonal}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 text-xs font-mono tracking-wider uppercase font-bold hover:bg-white/80 transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.12)]"
+                    className="flex-1 sm:flex-initial text-center justify-center inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 text-xs font-mono tracking-wider uppercase font-bold hover:bg-white/80 transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.12)]"
                   >
                     INSTAGRAM →
                   </a>
