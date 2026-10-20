@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import favicon from "/favicon.ico";
 
-import heroImg from "@/assets/rishi.jpg";
+import heroImg from "@/assets/front.png";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 import FrontendDeveloperSection from "@/components/FrontendDeveloperSection";
@@ -222,11 +222,11 @@ export default function App() {
           >
             {/* Background image presentation */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="relative h-full md:h-[85%] w-full sm:w-[85%] max-w-xl flex items-center justify-center overflow-hidden rounded-none md:rounded-3xl">
+              <div className="relative h-full md:h-[85%] w-full sm:w-[85%] max-w-2xl flex items-center justify-center overflow-hidden rounded-none md:rounded-3xl">
                 <img
                   src={heroImg}
                   alt="Rishi Gudigar"
-                  className="h-full w-full object-cover object-top opacity-50 md:opacity-75 filter contrast-105 brightness-95"
+                  className="h-full w-full object-cover object-[70%_center] opacity-50 md:opacity-75 filter contrast-105 brightness-95"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80 md:to-black/70" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-transparent to-black/95 md:from-black/80 md:to-black/80" />

@@ -1,3 +1,5 @@
+
+
 export const personalData = {
   name: "Rishi Gudigar",
   displayName: "RISHI",
@@ -69,6 +71,13 @@ export const personalData = {
   logos: ["ENGINEER", "ARTIST", "MAKER", "RISSHHIIIDRAWSS", "RISSHHIIICREATES"],
 };
 
+export interface GalleryMediaItem {
+  url: string;
+  videoUrl?: string;
+  title: string;
+  caption: string;
+}
+
 export interface WorkAreaItem {
   id: string;
   num: string;
@@ -85,7 +94,8 @@ export interface WorkAreaItem {
   instagramHandle?: string;
   buttonText?: string;
   imageUrl: string;
-  galleryImages?: { url: string; title: string; caption: string }[];
+  videoUrl?: string;
+  galleryImages?: GalleryMediaItem[];
   type: "tech" | "art" | "craft";
 }
 
@@ -114,19 +124,23 @@ export const mainWorkAreas: WorkAreaItem[] = [
     instagramHandle: "@risshhiiidrawss",
     buttonText: "VIEW RISSHHIIIDRAWSS →",
     imageUrl: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=1000&auto=format&fit=crop&q=80",
+    videoUrl: "/assets/videos/0427(84).mp4",
     galleryImages: [
       {
         url: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80",
+        videoUrl: "/assets/videos/0427(87).mp4",
         title: "Late Night Solitude",
         caption: "Turning quiet thoughts into ink and lines",
       },
       {
         url: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800&auto=format&fit=crop&q=80",
+        videoUrl: "/assets/videos/0427(151).mp4",
         title: "Unspoken Memories",
         caption: "Anime-inspired character sketches & emotions",
       },
       {
         url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
+        videoUrl: "/assets/videos/0427(158).mp4",
         title: "Random Moments",
         caption: "Visual stories captured between frames",
       },
@@ -138,14 +152,40 @@ export const mainWorkAreas: WorkAreaItem[] = [
     num: "02",
     title: "risshhiiicreates",
     subtitle: "WOOD • CNC • CRAFT",
+    tagline: "Where digital design meets physical craftsmanship.",
     categoryTag: "DIGITAL FABRICATION & WOODWORKING",
     description:
       "RishiCreates is where digital design meets traditional craftsmanship — creating CNC wood-relief designs, custom carvings and physical pieces from digital ideas.",
+    paragraphs: [
+      "Where digital precision meets the warmth of raw timber.",
+      "Creating CNC wood-relief designs, custom carvings, and physical tactile art from 3D relief heightmaps.",
+    ],
     techOrMedia: ["ArtCAM", "CNC Machining", "3D Relief Modeling", "Custom Wood Carvings", "Physical Fabrication"],
     instagramUrl: "https://www.instagram.com/risshhiiicreates",
     instagramHandle: "@risshhiiicreates",
     buttonText: "VIEW RISSHHIIICREATES →",
     imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1000&auto=format&fit=crop&q=80",
+    videoUrl: "/assets/videos/Video-1904.mp4",
+    galleryImages: [
+      {
+        url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80",
+        videoUrl: "/assets/videos/Video-15252.mp4",
+        title: "CNC Relief Carving",
+        caption: "Precision toolpaths carving depth into raw timber",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&auto=format&fit=crop&q=80",
+        videoUrl: "/assets/videos/Video-24993.mp4",
+        title: "ArtCAM 3D Modeling",
+        caption: "Transforming vectors into sculptural heightmaps",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?w=800&auto=format&fit=crop&q=80",
+        videoUrl: "/assets/videos/Video-27419.mp4",
+        title: "Hand Finishing & Polish",
+        caption: "Bringing out rich organic wood grain textures",
+      },
+    ],
     type: "craft",
   },
 ];
